@@ -23,7 +23,7 @@ public class TwoSum {
         int[] nums = {2, 6, 8, 7};
         int target = 9;
 
-        int[] ints = new TwoSum().twoSumBetter(nums, target);
+        int[] ints = new TwoSum().twoSumBetter2(nums, target);
         System.out.println(Arrays.toString(ints));
 
     }
@@ -60,7 +60,7 @@ public class TwoSum {
                 min = nums[i];
             }
         }
-
+        // 这个数组的索引 记录原数组减去min值的值，值记录原数组的索引+1
         int[] index = new int[max - min + 1];
         int other =0;
         for (int i = 0; i < nums.length; i++) {
@@ -79,4 +79,38 @@ public class TwoSum {
         }
         return res;
     }
+
+    public int[] twoSumBetter2(int[] nums, int target) {
+
+        int max = nums[0];
+        int min = nums[0];
+        for (int num : nums) {
+            if (num > max) {
+                max = num;
+            }
+            if (num < min) {
+                min = num;
+            }
+        }
+
+        int[] indexArr = new int[max - min + 1];
+        int other = 0;
+        for (int i = 0; i < nums.length; i++) {
+            other = target - nums[i];
+            if (other < min || other > max) {
+                continue;
+            }
+            if (indexArr[other - min] > 0) {
+                int[] res = new int[2];
+                res[0] = indexArr[other - min] - 1;
+                res[1] = i;
+                return res;
+            }
+
+            indexArr[nums[i] - min] = i + 1;
+        }
+
+        return null;
+    }
+
 }

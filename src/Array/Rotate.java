@@ -34,7 +34,7 @@ public class Rotate {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5, 6, 7};
-        new Rotate().rotate(nums, 3);
+        new Rotate().rotate2(nums, 3);
         System.out.println(Arrays.toString(nums));
     }
 
@@ -61,4 +61,16 @@ public class Rotate {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+
+
+    public void rotate2(int[] nums, int k) {
+        k = k % nums.length;
+        int[] temp = new int[nums.length];
+        for (int i = 0; i < temp.length; i++) {
+            int dot = i+k>=temp.length? i+k-temp.length:i+k;
+            temp[dot] = nums[i];
+        }
+        nums = temp;
+    }
+
 }

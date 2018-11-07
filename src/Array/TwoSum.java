@@ -20,8 +20,8 @@ public class TwoSum {
      * 所以返回 [0, 1]
      */
     public static void main(String[] args) {
-        int[] nums = {2, 6, 8, 7};
-        int target = 9;
+        int[] nums = {3,2,3};
+        int target = 6;
 
         int[] ints = new TwoSum().twoSumBetter2(nums, target);
         System.out.println(Arrays.toString(ints));

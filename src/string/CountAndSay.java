@@ -37,9 +37,11 @@ public class CountAndSay {
 
     public static void main(String[] args) {
 //        System.out.println(new CountAndSay().next("1"));
-        System.out.println(new CountAndSay().next("11"));
-        System.out.println(new CountAndSay().next("21"));
-        System.out.println(new CountAndSay().next("1211"));
+        System.out.println(new CountAndSay().countAndSay(1));
+        System.out.println(new CountAndSay().countAndSay(2));
+        System.out.println(new CountAndSay().countAndSay(3));
+        System.out.println(new CountAndSay().countAndSay(4));
+        System.out.println(new CountAndSay().countAndSay(5));
     }
 
     public String countAndSay(int n) {
@@ -53,17 +55,14 @@ public class CountAndSay {
         return next;
     }
 
-    // 1211
     public String next(String next) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < next.length(); ) {
             int j = i + 1;
-            for (; j < next.length() && next.charAt(j) != next.charAt(i); j++) ;
-
-            sb.append(j - i + 1).append(next.charAt(i));
-            if (j >= next.length() -1) {
-                return sb.toString();
+            while (j < next.length() && next.charAt(j) == next.charAt(i)) {
+                j++;
             }
+            sb.append(j - i).append(next.charAt(i));
             i = j;
         }
         return sb.toString();

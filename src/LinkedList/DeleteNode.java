@@ -42,14 +42,7 @@ public class DeleteNode {
 
         new DeleteNode().deleteNode(n2);
 
-        print(n1);
-    }
-
-    private static void print(ListNode n1) {
-        while (n1 != null) {
-            System.out.println(n1.val);
-            n1 = n1.next;
-        }
+        ListNode.print(n1);
     }
 
     public void deleteNode(ListNode node) {
